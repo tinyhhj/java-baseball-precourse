@@ -11,6 +11,11 @@ public class CustomBaseballNumber extends BaseballNumber {
         validateBaseballNumber();
     }
 
+    public CustomBaseballNumber(String input, int ballCount) {
+        super(input,ballCount);
+        validateBaseballNumber();
+    }
+
     public void validateBaseballNumber() {
         validateDuplicate();
         validateNumberRange();
@@ -36,5 +41,7 @@ public class CustomBaseballNumber extends BaseballNumber {
         }
         throw new InvalidNumberException(String.format("number should be %d <= number <= %d", BALL_MIN_VALUE,BALL_MAX_VALUE));
     }
+
+
 
 }

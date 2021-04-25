@@ -1,6 +1,8 @@
 package baseball.exception;
 
-public class InvalidNumberException extends RuntimeException{
+import baseball.domain.BaseballNumber;
+
+public class InvalidNumberException extends BaseballException {
     public InvalidNumberException(String message) {
         super(message);
     }

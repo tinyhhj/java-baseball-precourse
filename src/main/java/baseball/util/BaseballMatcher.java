@@ -12,7 +12,7 @@ public class BaseballMatcher {
         target = numbers;
     }
 
-    MatchResult[] match(BaseballNumber guess) {
+    public MatchResult[] match(BaseballNumber guess) {
         List<Integer> guessNumber = guess.getNumbers();
         MatchResult[] results = new MatchResult[guessNumber.size()];
 

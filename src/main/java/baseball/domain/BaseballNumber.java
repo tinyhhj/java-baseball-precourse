@@ -1,5 +1,8 @@
 package baseball.domain;
 
+import baseball.constant.MessageContainer;
+import baseball.exception.InvalidInputException;
+
 import java.util.*;
 
 public class BaseballNumber {
@@ -16,6 +19,11 @@ public class BaseballNumber {
     protected BaseballNumber(Integer... numbers) {
         this.ballCount = numbers.length;
         this.numbers = numbers;
+    }
+
+    protected BaseballNumber(String input, int ballCount) {
+        this.ballCount = ballCount;
+        this.numbers = parseInput(input, ballCount);
     }
 
     protected Integer[] generateNumbers(int ballCount) {
@@ -42,4 +50,36 @@ public class BaseballNumber {
     public int getBallCount() {
         return ballCount;
     }
+
+    public Integer[] parseInput(String input, int ballCount) {
+        int inputCount = input.length();
+        validateBallCount(ballCount, inputCount);
+
+        return validateTypeAndParseInput(input);
+    }
+
+    private void validateBallCount(int ballCount, int inputCount) {
+        if (inputCount != ballCount) {
+            throw new InvalidInputException(String.format(MessageContainer.INPUT_COUNT_ERROR_MESSAGE, ballCount, inputCount));
+        }
+    }
+    private Integer[] validateTypeAndParseInput(String input) {
+        String[] inputNumbers = input.split("");
+        Integer[] parsedInput = new Integer[inputNumbers.length];
+
+        for (int i = 0; i < parsedInput.length; i++) {
+            parsedInput[i] = parseInt(inputNumbers[i]);
+        }
+
+        return parsedInput;
+    }
+
+    private Integer parseInt(String inputNumber) {
+        try {
+            return Integer.parseInt(inputNumber);
+        } catch (NumberFormatException e) {
+            throw new InvalidInputException(String.format(MessageContainer.INPUT_TYPE_ERROR_MESSAGE));
+        }
+    }
+
 }
