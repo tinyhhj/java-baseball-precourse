@@ -75,6 +75,22 @@ public class BaseballMatcherTest {
     }
 
     @Test
+    @DisplayName("예측숫자와 타겟숫자 3볼 테스트")
+    public void matchGuesswithTargetThreeBall() {
+        //given
+        BaseballNumber target = new CustomBaseballNumber(6,7,2);
+        BaseballNumber guess = new CustomBaseballNumber(7,2,6);
+        BaseballMatcher matcher = new BaseballMatcher(target);
+        //when
+        MatchResult[] results = matcher.match(guess);
+        GuessResult guessResult = new GuessResult(results);
+        //then
+        assertThat(guessResult.isNothing()).isFalse();
+        assertThat(guessResult.getStrikes()).isEqualTo(0);
+        assertThat(guessResult.getBalls()).isEqualTo(3);
+    }
+
+    @Test
     @DisplayName("예측숫자와 타겟숫자 2볼 테스트")
     public void matchGuesswithTargetTwoBall() {
         //given

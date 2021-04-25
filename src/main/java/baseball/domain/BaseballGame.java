@@ -7,7 +7,7 @@ import baseball.exception.BaseballException;
 import baseball.util.BaseballMatcher;
 import baseball.view.BaseballGameView;
 
-public class BaseballGame {
+public class BaseballGame implements Game {
     private final int ballCount;
     private GameStatus status;
     private BaseballGameView gameViewer;
@@ -24,6 +24,7 @@ public class BaseballGame {
         this.matcher = new BaseballMatcher(new BaseballNumber(ballCount));
     }
 
+    @Override
     public void start() {
         do {
             startWithErrorHandling();
