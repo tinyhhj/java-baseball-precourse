@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.constant.MessageContainer;
 import baseball.exception.InvalidNumberException;
 
 import java.util.HashSet;
@@ -25,7 +26,7 @@ public class CustomBaseballNumber extends BaseballNumber {
         Set<Integer> numberSet = new HashSet<>(getNumbers());
 
         if (getBallCount() != numberSet.size()) {
-            throw new InvalidNumberException(String.format("number should be different and size: %d",getBallCount()));
+            throw new InvalidNumberException(MessageContainer.INPUT_DUPLICATE_ERROR_MESSAGE);
         }
     }
 
@@ -39,7 +40,8 @@ public class CustomBaseballNumber extends BaseballNumber {
         if (number <= BALL_MAX_VALUE && number >= BALL_MIN_VALUE) {
             return true;
         }
-        throw new InvalidNumberException(String.format("number should be %d <= number <= %d", BALL_MIN_VALUE,BALL_MAX_VALUE));
+        throw new InvalidNumberException(String.format(MessageContainer.INPUT_RANGE_ERROR_MESSAGE,
+                BALL_MIN_VALUE,BALL_MAX_VALUE));
     }
 
 
