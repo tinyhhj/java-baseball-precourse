@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.constant.MessageContainer;
+import baseball.exception.BaseballException;
 import baseball.exception.InvalidNumberException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -33,7 +35,8 @@ public class CustomBaseballNumberTest {
 
         assertThatThrownBy(()->new CustomBaseballNumber(numbers))
                 .isInstanceOf(InvalidNumberException.class)
-                .hasMessageMatching("number should be \\d+ <= number <= \\d+");
+                .hasMessage(String.format(MessageContainer.INPUT_RANGE_ERROR_MESSAGE,
+                        CustomBaseballNumber.BALL_MIN_VALUE, CustomBaseballNumber.BALL_MAX_VALUE));
     }
 
     @Test
@@ -43,7 +46,40 @@ public class CustomBaseballNumberTest {
 
         assertThatThrownBy(()->new CustomBaseballNumber(numbers))
                 .isInstanceOf(InvalidNumberException.class)
-                .hasMessageMatching("number should be different and size: \\d+");
+                .hasMessage(MessageContainer.INPUT_DUPLICATE_ERROR_MESSAGE);
+    }
+
+    @Test
+    @DisplayName("스트링 입력이 숫자가 아닌경우 테스트")
+    public void notNumberFromInput() {
+        String input = "123A";
+
+        assertThatThrownBy(()->new CustomBaseballNumber(input,input.length()))
+                .isInstanceOf(BaseballException.class)
+                .hasMessage(MessageContainer.INPUT_TYPE_ERROR_MESSAGE);
+    }
+
+    @Test
+    @DisplayName("스트링 입력이 타겟숫자 길이와 맞지않는 경우 테스트")
+    public void differentInputLengthWithTargetLength() {
+        Integer[] targetNumbers = new Integer[] { 1,2,3};
+        String input = "1423";
+
+        assertThatThrownBy(()->new CustomBaseballNumber(input,targetNumbers.length))
+                .isInstanceOf(BaseballException.class)
+                .hasMessage(String.format(MessageContainer.INPUT_COUNT_ERROR_MESSAGE,
+                        targetNumbers.length,input.length()));
+    }
+
+    @Test
+    @DisplayName("스트링 입력이 중복숫자를 포함한 경우 테스트")
+    public void inputHasDuplicate() {
+        Integer[] targetNumbers = new Integer[] { 1,2,3};
+        String input = "111";
+
+        assertThatThrownBy(()->new CustomBaseballNumber(input,targetNumbers.length))
+                .isInstanceOf(BaseballException.class)
+                .hasMessage(String.format(MessageContainer.INPUT_DUPLICATE_ERROR_MESSAGE));
     }
 
 
