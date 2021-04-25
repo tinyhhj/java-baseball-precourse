@@ -30,6 +30,11 @@ public class BaseballGameView {
         return inputReader.nextLine().trim();
     }
 
+    public String continueGame() {
+        outputWriter.println(MessageContainer.CONTINUE_GAME_MESSAGE);
+        return inputReader.nextLine().trim();
+    }
+
     public void println(String message) {
         outputWriter.println(message);
     }
