@@ -6,13 +6,13 @@ import java.util.Set;
 import baseball.constant.MessageContainer;
 import baseball.exception.InvalidNumberException;
 
-public class CustomBaseballNumber extends BaseballNumber {
-	public CustomBaseballNumber(Integer... numbers) {
+public class GuessBaseballNumber extends BaseballNumber {
+	public GuessBaseballNumber(Integer... numbers) {
 		super(numbers);
 		validateBaseballNumber();
 	}
 
-	public CustomBaseballNumber(String input, int ballCount) {
+	public GuessBaseballNumber(String input, int ballCount) {
 		super(input, ballCount);
 		validateBaseballNumber();
 	}

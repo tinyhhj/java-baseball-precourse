@@ -9,19 +9,19 @@ import baseball.constant.MessageContainer;
 import baseball.exception.BaseballException;
 import baseball.exception.InvalidNumberException;
 
-public class CustomBaseballNumberTest {
+public class GuessBaseballNumberTest {
 	@Test
 	@DisplayName("직접 입력한 숫자로 Baseball 생성 테스트")
 	public void createBaseballNumber() {
 		Integer[] numbers = new Integer[] {1, 2, 3};
-		CustomBaseballNumber customNumbers = new CustomBaseballNumber(numbers);
+		GuessBaseballNumber customNumbers = new GuessBaseballNumber(numbers);
 
 		assertThat(customNumbers.getNumbers())
 			.hasSize(numbers.length)
 			.contains(numbers);
 
 		Integer[] longNumbers = new Integer[] {1, 2, 3, 4, 5, 6, 7, 8, 9};
-		CustomBaseballNumber longCustomNumbers = new CustomBaseballNumber(longNumbers);
+		GuessBaseballNumber longCustomNumbers = new GuessBaseballNumber(longNumbers);
 
 		assertThat(longCustomNumbers.getNumbers())
 			.hasSize(longNumbers.length)
@@ -33,10 +33,10 @@ public class CustomBaseballNumberTest {
 	public void createBaseballWithExceedNumberRange() {
 		Integer[] numbers = new Integer[] {10, 1, 6, 7};
 
-		assertThatThrownBy(() -> new CustomBaseballNumber(numbers))
+		assertThatThrownBy(() -> new GuessBaseballNumber(numbers))
 			.isInstanceOf(InvalidNumberException.class)
 			.hasMessage(String.format(MessageContainer.INPUT_RANGE_ERROR_MESSAGE,
-				CustomBaseballNumber.BALL_MIN_VALUE, CustomBaseballNumber.BALL_MAX_VALUE));
+				GuessBaseballNumber.BALL_MIN_VALUE, GuessBaseballNumber.BALL_MAX_VALUE));
 	}
 
 	@Test
@@ -44,7 +44,7 @@ public class CustomBaseballNumberTest {
 	public void createBaseballWithDuplicate() {
 		Integer[] numbers = new Integer[] {1, 1, 6, 7};
 
-		assertThatThrownBy(() -> new CustomBaseballNumber(numbers))
+		assertThatThrownBy(() -> new GuessBaseballNumber(numbers))
 			.isInstanceOf(InvalidNumberException.class)
 			.hasMessage(MessageContainer.INPUT_DUPLICATE_ERROR_MESSAGE);
 	}
@@ -54,7 +54,7 @@ public class CustomBaseballNumberTest {
 	public void notNumberFromInput() {
 		String input = "123A";
 
-		assertThatThrownBy(() -> new CustomBaseballNumber(input, input.length()))
+		assertThatThrownBy(() -> new GuessBaseballNumber(input, input.length()))
 			.isInstanceOf(BaseballException.class)
 			.hasMessage(MessageContainer.INPUT_TYPE_ERROR_MESSAGE);
 	}
@@ -65,7 +65,7 @@ public class CustomBaseballNumberTest {
 		Integer[] targetNumbers = new Integer[] {1, 2, 3};
 		String input = "1423";
 
-		assertThatThrownBy(() -> new CustomBaseballNumber(input, targetNumbers.length))
+		assertThatThrownBy(() -> new GuessBaseballNumber(input, targetNumbers.length))
 			.isInstanceOf(BaseballException.class)
 			.hasMessage(String.format(MessageContainer.INPUT_COUNT_ERROR_MESSAGE,
 				targetNumbers.length, input.length()));
@@ -77,7 +77,7 @@ public class CustomBaseballNumberTest {
 		Integer[] targetNumbers = new Integer[] {1, 2, 3};
 		String input = "111";
 
-		assertThatThrownBy(() -> new CustomBaseballNumber(input, targetNumbers.length))
+		assertThatThrownBy(() -> new GuessBaseballNumber(input, targetNumbers.length))
 			.isInstanceOf(BaseballException.class)
 			.hasMessage(String.format(MessageContainer.INPUT_DUPLICATE_ERROR_MESSAGE));
 	}

@@ -5,10 +5,7 @@ import java.util.Scanner;
 
 import baseball.constant.MatchResult;
 import baseball.constant.MessageContainer;
-import baseball.domain.BaseballNumber;
-import baseball.domain.CustomBaseballNumber;
 import baseball.domain.GuessResult;
-import baseball.util.BaseballMatcher;
 
 public class BaseballGameView {
 	private Scanner inputReader;
@@ -54,21 +51,4 @@ public class BaseballGameView {
 				guessResult.getBalls(), MatchResult.BALL.getResultMessage()));
 		}
 	}
-
-	public static void main(String[] args) {
-		BaseballGameView view = new BaseballGameView();
-
-		while (true) {
-			BaseballNumber target = new BaseballNumber(3);
-			view.outputWriter.println(target.getNumbers());
-			while (true) {
-				BaseballMatcher matcher = new BaseballMatcher(target);
-				BaseballNumber guess = new CustomBaseballNumber(view.readInput(), 3);
-				MatchResult[] results = matcher.match(guess);
-				view.showGuessResult(new GuessResult(results));
-			}
-
-		}
-	}
-
 }

@@ -43,10 +43,6 @@ public class BaseballNumber {
 		return numbers;
 	}
 
-	public static BaseballNumber generate(int ballCount) {
-		return new BaseballNumber(ballCount);
-	}
-
 	public List<Integer> getNumbers() {
 		return Arrays.asList(numbers);
 	}

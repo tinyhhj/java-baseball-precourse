@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import baseball.constant.MatchResult;
 import baseball.domain.BaseballNumber;
-import baseball.domain.CustomBaseballNumber;
+import baseball.domain.GuessBaseballNumber;
 import baseball.domain.GuessResult;
 
 public class BaseballMatcherTest {
@@ -15,8 +15,8 @@ public class BaseballMatcherTest {
 	@DisplayName("예측숫자와 타겟숫자 3스트라이크 테스트")
 	public void matchGuessWithTargetAllStrike() {
 		//given
-		BaseballNumber target = new CustomBaseballNumber(1, 2, 3);
-		BaseballNumber guess = new CustomBaseballNumber(1, 2, 3);
+		BaseballNumber target = new GuessBaseballNumber(1, 2, 3);
+		BaseballNumber guess = new GuessBaseballNumber(1, 2, 3);
 		BaseballMatcher matcher = new BaseballMatcher(target);
 		//when
 		MatchResult[] results = matcher.match(guess);
@@ -31,8 +31,8 @@ public class BaseballMatcherTest {
 	@DisplayName("예측숫자와 타겟숫자 2스트라이크 테스트")
 	public void matchGuesswithTargetTwoStrike() {
 		//given
-		BaseballNumber target = new CustomBaseballNumber(6, 7, 2);
-		BaseballNumber guess = new CustomBaseballNumber(5, 7, 2);
+		BaseballNumber target = new GuessBaseballNumber(6, 7, 2);
+		BaseballNumber guess = new GuessBaseballNumber(5, 7, 2);
 		BaseballMatcher matcher = new BaseballMatcher(target);
 		//when
 		MatchResult[] results = matcher.match(guess);
@@ -47,8 +47,8 @@ public class BaseballMatcherTest {
 	@DisplayName("예측숫자와 타겟숫자 1스트라이크 1볼 테스트")
 	public void matchGuesswithTargetOneStrikeOneBall() {
 		//given
-		BaseballNumber target = new CustomBaseballNumber(6, 7, 2);
-		BaseballNumber guess = new CustomBaseballNumber(5, 7, 6);
+		BaseballNumber target = new GuessBaseballNumber(6, 7, 2);
+		BaseballNumber guess = new GuessBaseballNumber(5, 7, 6);
 		BaseballMatcher matcher = new BaseballMatcher(target);
 		//when
 		MatchResult[] results = matcher.match(guess);
@@ -63,8 +63,8 @@ public class BaseballMatcherTest {
 	@DisplayName("예측숫자와 타겟숫자 1스트라이크 2볼 테스트")
 	public void matchGuesswithTargetOneStrikeTwoBall() {
 		//given
-		BaseballNumber target = new CustomBaseballNumber(6, 7, 2);
-		BaseballNumber guess = new CustomBaseballNumber(2, 7, 6);
+		BaseballNumber target = new GuessBaseballNumber(6, 7, 2);
+		BaseballNumber guess = new GuessBaseballNumber(2, 7, 6);
 		BaseballMatcher matcher = new BaseballMatcher(target);
 		//when
 		MatchResult[] results = matcher.match(guess);
@@ -79,8 +79,8 @@ public class BaseballMatcherTest {
 	@DisplayName("예측숫자와 타겟숫자 3볼 테스트")
 	public void matchGuesswithTargetThreeBall() {
 		//given
-		BaseballNumber target = new CustomBaseballNumber(6, 7, 2);
-		BaseballNumber guess = new CustomBaseballNumber(7, 2, 6);
+		BaseballNumber target = new GuessBaseballNumber(6, 7, 2);
+		BaseballNumber guess = new GuessBaseballNumber(7, 2, 6);
 		BaseballMatcher matcher = new BaseballMatcher(target);
 		//when
 		MatchResult[] results = matcher.match(guess);
@@ -95,8 +95,8 @@ public class BaseballMatcherTest {
 	@DisplayName("예측숫자와 타겟숫자 2볼 테스트")
 	public void matchGuesswithTargetTwoBall() {
 		//given
-		BaseballNumber target = new CustomBaseballNumber(6, 7, 2);
-		BaseballNumber guess = new CustomBaseballNumber(2, 9, 6);
+		BaseballNumber target = new GuessBaseballNumber(6, 7, 2);
+		BaseballNumber guess = new GuessBaseballNumber(2, 9, 6);
 		BaseballMatcher matcher = new BaseballMatcher(target);
 		//when
 		MatchResult[] results = matcher.match(guess);
@@ -111,8 +111,8 @@ public class BaseballMatcherTest {
 	@DisplayName("예측숫자와 타겟숫자 1볼 테스트")
 	public void matchGuesswithTargetOneBall() {
 		//given
-		BaseballNumber target = new CustomBaseballNumber(6, 7, 2);
-		BaseballNumber guess = new CustomBaseballNumber(3, 5, 6);
+		BaseballNumber target = new GuessBaseballNumber(6, 7, 2);
+		BaseballNumber guess = new GuessBaseballNumber(3, 5, 6);
 		BaseballMatcher matcher = new BaseballMatcher(target);
 		//when
 		MatchResult[] results = matcher.match(guess);
@@ -127,8 +127,8 @@ public class BaseballMatcherTest {
 	@DisplayName("예측숫자와 타겟숫자 낫싱 테스트")
 	public void matchGuesswithTargetNothing() {
 		//given
-		BaseballNumber target = new CustomBaseballNumber(6, 7, 2);
-		BaseballNumber guess = new CustomBaseballNumber(8, 9, 1);
+		BaseballNumber target = new GuessBaseballNumber(6, 7, 2);
+		BaseballNumber guess = new GuessBaseballNumber(8, 9, 1);
 		BaseballMatcher matcher = new BaseballMatcher(target);
 		//when
 		MatchResult[] results = matcher.match(guess);

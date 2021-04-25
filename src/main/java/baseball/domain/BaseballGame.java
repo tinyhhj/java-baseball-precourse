@@ -34,7 +34,7 @@ public class BaseballGame implements Game {
 	private void startWithErrorHandling() {
 		try {
 			String input = this.gameViewer.readInput();
-			BaseballNumber guessNumber = new CustomBaseballNumber(input, ballCount);
+			BaseballNumber guessNumber = new GuessBaseballNumber(input, ballCount);
 			MatchResult[] results = this.matcher.match(guessNumber);
 			GuessResult guessResult = new GuessResult(results);
 			processGuessResult(guessResult);
@@ -42,7 +42,7 @@ public class BaseballGame implements Game {
 			this.gameViewer.println(e.getMessage());
 		}
 	}
-
+	// 확장가능 부분: 끝내는 조건
 	private void processGuessResult(GuessResult guessResult) {
 		if (guessResult.getStrikes() == ballCount) {
 			this.gameViewer.println(String.format(MessageContainer.FINISH_MESSAGE, ballCount));
@@ -50,11 +50,6 @@ public class BaseballGame implements Game {
 			return;
 		}
 		this.gameViewer.showGuessResult(guessResult);
-	}
-
-	public static void main(String[] args) {
-		BaseballGame baseballGame = new BaseballGame(new BaseballGameView(), 3);
-		baseballGame.start();
 	}
 
 	private void setStatus(GameStatus status) {

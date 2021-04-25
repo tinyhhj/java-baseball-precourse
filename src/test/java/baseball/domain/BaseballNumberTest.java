@@ -14,25 +14,28 @@ public class BaseballNumberTest {
 	@DisplayName("서로다른 3자리숫자 생성 테스트")
 	public void randomNumberGenerate() {
 		int ballCount = 3;
-		BaseballNumber numbers = BaseballNumber.generate(ballCount);
+		BaseballNumber numbers = new BaseballNumber(ballCount);
 		Set<Integer> ballNumberSet = new HashSet<>(numbers.getNumbers());
 
 		// 1-9 서로다른 3자리 숫자
 		assertThat(ballNumberSet)
 			.hasSize(ballCount)
-			.allMatch(ballNumber -> ballNumber < 10 && ballNumber > 0);
+			.allMatch(ballNumber -> ballNumber <= BaseballNumber.BALL_MAX_VALUE
+				&& ballNumber >= BaseballNumber.BALL_MIN_VALUE);
+
 	}
 
 	@Test
 	@DisplayName("9자리 서로다른 3자리숫자 생성 테스트")
 	public void randomNumberGenerateLongerThree() {
 		int ballCount = 9;
-		BaseballNumber numbers = BaseballNumber.generate(ballCount);
+		BaseballNumber numbers = new BaseballNumber(ballCount);
 		Set<Integer> ballNumberSet = new HashSet<>(numbers.getNumbers());
 
 		// 9자리 1-9다른 숫자이므로 1-9모두 포함
 		assertThat(ballNumberSet)
 			.hasSize(ballCount)
-			.allMatch(ballNumber -> ballNumber < 10 && ballNumber > 0);
+			.allMatch(ballNumber -> ballNumber <= BaseballNumber.BALL_MAX_VALUE
+				&& ballNumber >= BaseballNumber.BALL_MIN_VALUE);
 	}
 }
