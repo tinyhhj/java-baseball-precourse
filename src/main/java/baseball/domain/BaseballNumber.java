@@ -3,17 +3,23 @@ package baseball.domain;
 import java.util.*;
 
 public class BaseballNumber {
-    private static final int BALL_MAX_VALUE = 9;
-    private static final int BALL_MIN_VALUE = 1;
-
-    private final Integer[] numbers;
+    protected static final int BALL_MAX_VALUE = 9;
+    protected static final int BALL_MIN_VALUE = 1;
+    private int ballCount;
+    private Integer[] numbers;
 
     protected BaseballNumber(int ballCount) {
-        numbers = new Integer[ballCount];
-        generateNumbers();
+        this.ballCount = ballCount;
+        numbers = generateNumbers(ballCount);
     }
 
-    private void generateNumbers() {
+    protected BaseballNumber(Integer... numbers) {
+        this.ballCount = numbers.length;
+        this.numbers = numbers;
+    }
+
+    protected Integer[] generateNumbers(int ballCount) {
+        Integer[] numbers = new Integer[ballCount];
         Random randomGenerator = new Random();
         Set<Integer> randomNumbers = new HashSet<>();
 
@@ -22,17 +28,18 @@ public class BaseballNumber {
             numbers[randomNumbers.size()] = randomNumberBall;
             randomNumbers.add(randomNumberBall);
         }
+        return numbers;
     }
 
     public static BaseballNumber generate(int ballCount) {
         return new BaseballNumber(ballCount);
     }
 
-    public int size() {
-        return numbers.length;
-    }
-
     public List<Integer> getNumbers() {
         return Arrays.asList(numbers);
+    }
+
+    public int getBallCount() {
+        return ballCount;
     }
 }
