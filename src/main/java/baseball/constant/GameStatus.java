@@ -1,6 +1,6 @@
 package baseball.constant;
 
 public enum GameStatus {
-    PLAYING,
-    FINISH
+	PLAYING,
+	FINISH
 }

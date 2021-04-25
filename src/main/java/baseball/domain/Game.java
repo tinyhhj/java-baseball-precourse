@@ -1,5 +1,5 @@
 package baseball.domain;
 
 public interface Game {
-    void start();
+	void start();
 }
