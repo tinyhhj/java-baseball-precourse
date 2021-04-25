@@ -30,6 +30,10 @@ public class BaseballGameView {
         return inputReader.nextLine().trim();
     }
 
+    public void println(String message) {
+        outputWriter.println(message);
+    }
+
 
 
     public void showGuessResult(GuessResult guessResult) {
