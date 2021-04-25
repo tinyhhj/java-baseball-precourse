@@ -8,7 +8,7 @@ public class BaseballNumber {
     private int ballCount;
     private Integer[] numbers;
 
-    protected BaseballNumber(int ballCount) {
+    public BaseballNumber(int ballCount) {
         this.ballCount = ballCount;
         numbers = generateNumbers(ballCount);
     }
