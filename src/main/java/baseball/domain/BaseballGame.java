@@ -28,7 +28,11 @@ public class BaseballGame implements Game {
 	public void start() {
 		do {
 			startWithErrorHandling();
-		} while (status.equals(GameStatus.PLAYING));
+		} while (isPlaying());
+	}
+
+	private boolean isPlaying() {
+		return status.equals(GameStatus.PLAYING);
 	}
 
 	private void startWithErrorHandling() {

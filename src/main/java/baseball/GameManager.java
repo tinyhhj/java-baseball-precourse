@@ -10,10 +10,13 @@ public class GameManager {
 
 	public static void main(String[] args) {
 		BaseballGameView gameView = new BaseballGameView();
-		int ballCount = 3;
 		do {
-			Game game = new BaseballGame(gameView, ballCount);
+			Game game = new BaseballGame(gameView);
 			game.start();
-		} while (!EXIT_GAME.equals(gameView.continueGame()));
+		} while (isContinue(gameView));
+	}
+
+	private static boolean isContinue(BaseballGameView gameView) {
+		return !EXIT_GAME.equals(gameView.continueGame());
 	}
 }
