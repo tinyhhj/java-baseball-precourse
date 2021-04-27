@@ -8,10 +8,10 @@ import baseball.util.BaseballMatcher;
 import baseball.view.BaseballGameView;
 
 public class BaseballGame implements Game {
-	private final int ballCount;
+	protected final int ballCount;
 	private GameStatus status;
 	private BaseballGameView gameViewer;
-	private BaseballMatcher matcher;
+	protected BaseballMatcher matcher;
 
 	public BaseballGame(BaseballGameView view) {
 		this(view, 3);
@@ -29,6 +29,7 @@ public class BaseballGame implements Game {
 		do {
 			startWithErrorHandling();
 		} while (isPlaying());
+		getGameViewer().clearView();
 	}
 
 	private boolean isPlaying() {
@@ -58,5 +59,9 @@ public class BaseballGame implements Game {
 
 	private void setStatus(GameStatus status) {
 		this.status = status;
+	}
+
+	public BaseballGameView getGameViewer() {
+		return gameViewer;
 	}
 }

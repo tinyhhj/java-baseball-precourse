@@ -1,17 +1,21 @@
 package baseball;
 
+import java.io.FileNotFoundException;
+
 import baseball.constant.GameStatus;
-import baseball.domain.BaseballGame;
 import baseball.domain.Game;
+import baseball.domain.LoadableBaseballGame;
 import baseball.view.BaseballGameView;
+import baseball.view.LoadableBaseballGameView;
 
 public class GameManager {
 	public static final String EXIT_GAME = String.valueOf(GameStatus.EXIT.ordinal());
 
-	public static void main(String[] args) {
-		BaseballGameView gameView = new BaseballGameView();
+	public static void main(String[] args) throws FileNotFoundException {
+		BaseballGameView gameView;
 		do {
-			Game game = new BaseballGame(gameView);
+			gameView = new LoadableBaseballGameView();
+			Game game = new LoadableBaseballGame(gameView);
 			game.start();
 		} while (isContinue(gameView));
 	}

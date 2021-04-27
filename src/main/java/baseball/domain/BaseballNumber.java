@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
+
 import baseball.constant.MessageContainer;
 import baseball.exception.InvalidInputException;
 
@@ -84,4 +85,12 @@ public class BaseballNumber {
 		}
 	}
 
+	@Override
+	public String toString() {
+		StringBuffer sb = new StringBuffer();
+		for (int i : numbers) {
+			sb.append(i);
+		}
+		return sb.toString();
+	}
 }

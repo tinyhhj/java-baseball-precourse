@@ -9,7 +9,7 @@ import baseball.domain.GuessResult;
 
 public class BaseballGameView {
 	private Scanner inputReader;
-	private PrintStream outputWriter;
+	protected PrintStream outputWriter;
 
 	public BaseballGameView() {
 		this(new Scanner(System.in), System.out);
@@ -50,5 +50,15 @@ public class BaseballGameView {
 			outputWriter.println(String.format("%d %s",
 				guessResult.getBalls(), MatchResult.BALL.getResultMessage()));
 		}
+	}
+
+	public void clearView() {
+		// clear view
+		outputWriter.print("\033[H\033[2J");
+		outputWriter.flush();
+	}
+
+	public PrintStream getOutputWriter() {
+		return outputWriter;
 	}
 }

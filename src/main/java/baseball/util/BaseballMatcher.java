@@ -33,4 +33,7 @@ public class BaseballMatcher {
 		return MatchResult.NOTHING;
 	}
 
+	public BaseballNumber getTarget() {
+		return target;
+	}
 }
